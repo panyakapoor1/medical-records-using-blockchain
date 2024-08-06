@@ -24,7 +24,7 @@ Comprehensive Data Entry: Allows for detailed input of patient information, incl
 Blockchain Security: Ensures that all patient data is securely stored and accessible only to authorized personnel.
 Medical Records
 
-Non-Fungible Tokens (NFTs): Medical records are managed using ERC-721 non-fungible tokens, which represent unique assets that are not interchangeable.
+Non-Fungible Tokens (NFTs): Medical records are managed using non-fungible tokens, which represent unique assets that are not interchangeable.
 
 Update Restrictions: Only doctors can update medical records, ensuring data integrity.
 
