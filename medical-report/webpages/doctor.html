@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Doctor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #333;
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+      a {
+        text-decoration: none;
+      }
+      button {
+        padding: 8px 10px;
+        margin: 0px;
+        background-color: #007bff;
+        border: none;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      form {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 10px;
+      }
+      input[type="text"],
+      input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      input[type="button"] {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border: none;
+      }
+      input[type="button"]:hover {
+        background-color: #0056b3;
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+    <script>
+      var account;
+      window.addEventListener("load", async () => {
+        if (typeof window.ethereum !== "undefined") {
+          console.log("MetaMask is Available :) !");
+        }
+
+        if (window.ethereum) {
+          window.web3 = new Web3(ethereum);
+          ethereum.autoRefreshOnNetworkChange = false;
+          const accounts = await ethereum.enable();
+          account = accounts[0];
+        } else if (window.web3) {
+          window.web3 = new Web3(
+            new Web3.providers.HttpProvider(
+              "https://ropsten.infura.io/v3/cbd9dc11b30147e9a2cc974be655ef7c"
+            )
+          );
+        } else {
+          console.log("Non-Ethereum browser detected. Please install MetaMask");
+        }
+      });
+
+      var abi = [
+        {
+          inputs: [],
+          stateMutability: "nonpayable",
+          type: "constructor",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint16",
+              name: "doctor_id",
+              type: "uint16",
+            },
+          ],
+          name: "retreive_doctor_details",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint16",
+              name: "doctor_id",
+              type: "uint16",
+            },
+            {
+              internalType: "string",
+              name: "_doctor_name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "_doctor_specialisation",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "_doctor_ph_no",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "_doctor_address",
+              type: "string",
+            },
+          ],
+          name: "store_doctor_details",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ];
+      var contractaddress = "0x466147A21E54F6a7A22Cc86004ab5841C00bE41f";
+
+      function add_details() {
+        var myContract = new web3.eth.Contract(abi, contractaddress, {
+          from: account,
+          gasPrice: "5000000",
+          gas: "500000",
+        });
+        var ds1 = document.getElementById("spec").value;
+        var ds2 = document.getElementById("pno").value;
+        var ds3 = document.getElementById("addr").value;
+        var tname = document.getElementById("name1").value;
+        var id = document.getElementById("id1").value;
+        var result = myContract.methods
+          .store_doctor_details(id, tname, ds1, ds2, ds3)
+          .send(function (err, result) {
+            if (err) {
+              console.log(err);
+            }
+          });
+      }
+
+      function show_details() {
+        var myContract = new web3.eth.Contract(abi, contractaddress, {
+          from: account,
+          gasPrice: "5000000",
+          gas: "500000",
+        });
+        var idd = document.getElementById("tid").value;
+        var result = myContract.methods
+          .retreive_doctor_details(idd)
+          .call(function (err, result) {
+            if (err) {
+              console.log(err);
+            }
+            if (result) {
+              document.getElementById("get_name").innerHTML = result[0];
+              document.getElementById("get_spec").innerHTML = result[1];
+              document.getElementById("get_pno").innerHTML = result[2];
+              document.getElementById("get_addr").innerHTML = result[3];
+            }
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      <a href="hospital.html"
+        ><button type="submit" class="hidden" style="margin-right: 16px">
+          Hospital Registration
+        </button></a
+      >
+      <a href="patient.html"
+        ><button type="submit" class="hidden" style="margin-right: 16px">
+          Patient Registration
+        </button></a
+      >
+      <a href="patient_details.html"
+        ><button type="submit" class="hidden" style="margin-right: 16px">
+          View Patient Details
+        </button></a
+      >
+      <a href="record_details.html"
+        ><button type="submit" class="hidden" style="margin-right: 16px">
+          View Medical Record
+        </button></a
+      >
+      <a href="examine_details.html"
+        ><button type="submit" class="hidden" style="margin-right: 16px">
+          View Patient Examine details
+        </button></a
+      >
+    </p>
+
+    <h1>Doctor Registration</h1>
+
+    <h2>Register Doctor</h2>
+    <form>
+      <table>
+        <tr>
+          <td>Enter Doctor Id:</td>
+          <td><input type="text" id="id1" name="id1" /></td>
+        </tr>
+        <tr>
+          <td>Doctor Name:</td>
+          <td><input type="text" id="name1" name="name1" /></td>
+        </tr>
+        <tr>
+          <td>Doctor Specification:</td>
+          <td><input type="text" id="spec" name="spec" /></td>
+        </tr>
+        <tr>
+          <td>Doctor Phone Number:</td>
+          <td><input type="text" id="pno" name="pno" /></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="button" onclick="add_details()" value="Register" />
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <h3>
+      To get details of a doctor <a href="doctor_details.html">Click Here</a>
+    </h3>
+  </body>
+</html>

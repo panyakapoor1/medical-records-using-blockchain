@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Body Examine Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            color: black;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav {
+            margin: 1rem;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+        nav button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        nav button:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .form-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-group button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            color: #014288;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Patient Body Examine Details</h1>
+    </header>
+    <nav>
+        <a href="hospital.html"><button>Hospital Registration</button></a>
+        <a href="doctor.html"><button>Doctor Registration</button></a>
+        <a href="patient.html"><button>Patient Registration</button></a>
+        <a href="patient_details.html"><button>View Patient Details</button></a>
+        <a href="record_details.html"><button>View Medical Record</button></a>
+        <a href="examine_details.html"><button>View Patient Examine Details</button></a>
+    </nav>
+    <div class="form-container">
+        <div class="form-group">
+            <label for="id0">Patient ID:</label>
+            <input type="text" id="id0" name="id0">
+        </div>
+        <div class="form-group">
+            <label for="dates1">Previous Dates:</label>
+            <input type="text" id="dates1" name="dates1">
+        </div>
+        <div class="form-group">
+            <button onclick="prev_details()">Submit Previous Details</button>
+        </div>
+				<hr>
+
+        <div class="form-group">
+            <label for="id1">Patient ID:</label>
+            <input type="text" id="id1" name="id1">
+        </div>
+        <div class="form-group">
+            <label for="blood">Blood Test:</label>
+            <input type="text" id="blood" name="blood">
+        </div>
+        <div class="form-group">
+            <label for="uri">Urine Test:</label>
+            <input type="text" id="uri" name="uri">
+        </div>
+        <div class="form-group">
+            <label for="ecg">ECG:</label>
+            <input type="text" id="ecg" name="ecg">
+        </div>
+        <div class="form-group">
+            <label for="mri">MRI Scan:</label>
+            <input type="text" id="mri" name="mri">
+        </div>
+        <div class="form-group">
+            <label for="ct">CT Scan:</label>
+            <input type="text" id="ct" name="ct">
+        </div>
+        <div class="form-group">
+            <label for="xray">X-Ray:</label>
+            <input type="text" id="xray" name="xray">
+        </div>
+        <div class="form-group">
+            <label for="lab">Lab Test:</label>
+            <input type="text" id="lab" name="lab">
+        </div>
+        <div class="form-group">
+            <label for="built">Built:</label>
+            <input type="text" id="built" name="built">
+        </div>
+        <div class="form-group">
+            <label for="nou">Nourishment:</label>
+            <input type="text" id="nou" name="nou">
+        </div>
+        <div class="form-group">
+            <label for="eyes">Eyes:</label>
+            <input type="text" id="eyes" name="eyes">
+        </div>
+        <div class="form-group">
+            <label for="ton">Tongue:</label>
+            <input type="text" id="ton" name="ton">
+        </div>
+        <div class="form-group">
+            <label for="pulse">Pulse:</label>
+            <input type="text" id="pulse" name="pulse">
+        </div>
+        <div class="form-group">
+            <label for="bp">Blood Pressure:</label>
+            <input type="text" id="bp" name="bp">
+        </div>
+        <div class="form-group">
+            <label for="temp">Temperature:</label>
+            <input type="text" id="temp" name="temp">
+        </div>
+        <div class="form-group">
+            <label for="respiratory_rate">Respiratory Rate:</label>
+            <input type="text" id="respiratory_rate" name="respiratory_rate">
+        </div>
+        <div class="form-group">
+            <button onclick="inv_details()">Submit Investigation Details</button>
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+    <script>
+        var account;
+        window.addEventListener('load', async () => {
+            if (typeof window.ethereum !== 'undefined') { 
+                console.log("MetaMask is Available :) !"); 
+            }
+            // Modern DApp browsers
+            if (window.ethereum) {
+                window.web3 = new Web3(ethereum);
+                ethereum.autoRefreshOnNetworkChange = false;
+                const accounts = await ethereum.enable();
+                account = accounts[0];
+            }
+            // Legacy DApp browsers
+            else if (window.web3) {
+                window.web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/cbd9dc11b30147e9a2cc974be655ef7c")); 
+            }
+            // Non-DApp browsers
+            else {
+                console.log('Non-Ethereum browser detected. Please install MetaMask');
+            }
+        });
+
+        var abi = [ /* ABI array as provided */ ];
+        var contractaddress = '0x4451D39BEF7F74A71e43804eD6402C6AceA04089';
+
+        function prev_details() {
+            var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '5000000'});
+            var ds1 = document.getElementById("dates1").value;
+            var id = document.getElementById("id0").value;
+            myContract.methods.previous_dates(id, ds1).send()
+                .on('receipt', function(receipt) {
+                    document.getElementById("result0").innerHTML = "Transaction successful: " + receipt.transactionHash;
+                })
+                .on('error', function(error) {
+                    console.log(error);
+                });
+        }
+
+        function inv_details() {
+            var myContract = new web3.eth.Contract(abi, contractaddress, {from: account, gasPrice: '5000000', gas: '5000000'});
+            var blood = document.getElementById("blood").value;
+            var uri = document.getElementById("uri").value;
+            var ecg = document.getElementById("ecg").value;
+            var mri = document.getElementById("mri").value;
+            var ct = document.getElementById("ct").value;
+            var xray = document.getElementById("xray").value;
+            var lab = document.getElementById("lab").value;
+            var built = document.getElementById("built").value;
+            var nou = document.getElementById("nou").value;
+            var eyes = document.getElementById("eyes").value;
+            var ton = document.getElementById("ton").value;
+            var pulse = document.getElementById("pulse").value;
+            var bp = document.getElementById("bp").value;
+            var temp = document.getElementById("temp").value;
+            var respiratory_rate = document.getElementById("respiratory_rate").value;
+            var id = document.getElementById("id1").value;
+            myContract.methods.investigation_details(id, blood, uri, ecg, mri, ct, xray, lab, built, nou, eyes, ton, pulse, bp, temp, respiratory_rate).send()
+                .on('receipt', function(receipt) {
+                    document.getElementById("result1").innerHTML = "Transaction successful: " + receipt.transactionHash;
+                })
+                .on('error', function(error) {
+                    console.log(error);
+                });
+        }
+    </script>
+</body>
+</html>
