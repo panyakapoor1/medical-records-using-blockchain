@@ -1,12 +1,12 @@
 # medical-records-using-blockchain
 
-EzRecords
+Block My Records
 
 Team Bit Titans
-Welcome to EzRecords, a blockchain-based medical records management system built using Ethereum and Solidity. Our platform allows for secure and efficient registration and retrieval of patient medical records. Below is a detailed overview of our project.
+Welcome to Block My Records, a blockchain-based medical records management system built using Ethereum and Solidity. Our platform allows for secure and efficient registration and retrieval of patient medical records. Below is a detailed overview of our project.
 
 Overview
-EzRecords is a web-based application designed to manage patient medical records securely using blockchain technology. The system ensures that only authorized personnel can add or modify information, thus maintaining the integrity and confidentiality of medical data. Key features of our platform include patient, doctor, and hospital registration, along with secure access to medical records.
+Block My Records is a web-based application designed to manage patient medical records securely using blockchain technology. The system ensures that only authorized personnel can add or modify information, thus maintaining the integrity and confidentiality of medical data. Key features of our platform include patient, doctor, and hospital registration, along with secure access to medical records.
 
 Features
 
@@ -38,4 +38,4 @@ Smart Contracts: Solidity
 Web Site Development: HTML, CSS, JS
 Distributed Storage: IPFS (InterPlanetary File System)
 
-Thank you for your interest in EzRecords. We hope this documentation provides a clear understanding of our project. Feel free to explore the repository.
+Thank you for your interest in Block My Records. We hope this documentation provides a clear understanding of our project. Feel free to explore the repository.
