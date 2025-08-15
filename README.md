@@ -1,41 +1,48 @@
-# medical-records-using-blockchain
+# Medical Records Using Blockchain  
+**Project Name:** Block My Records  
+**Team:** Bit Titans  
 
-Block My Records
+---
 
-Team Bit Titans
-Welcome to Block My Records, a blockchain-based medical records management system built using Ethereum and Solidity. Our platform allows for secure and efficient registration and retrieval of patient medical records. Below is a detailed overview of our project.
+## 📌 Overview  
+Block My Records is a **web-based application** designed to manage patient medical records securely using **Ethereum blockchain technology**.  
+The system ensures that only authorized personnel can add or modify information, maintaining the **integrity** and **confidentiality** of medical data.  
 
-Overview
-Block My Records is a web-based application designed to manage patient medical records securely using blockchain technology. The system ensures that only authorized personnel can add or modify information, thus maintaining the integrity and confidentiality of medical data. Key features of our platform include patient, doctor, and hospital registration, along with secure access to medical records.
+Key features include:  
+- Patient, doctor, and hospital registration.  
+- Secure access to medical records.  
+- Blockchain-backed data protection.  
 
-Features
+---
 
-Hospital Registration
-Admin-Only Access: Hospital registration can only be performed by the hospital itself. Any unauthorized attempts to register are revoked, and the smart contract is not executed.
-View Details: Users can view stored details such as name, address, and specifications of the registered hospital using the hospitalId.
+## 🚀 Features  
 
-Doctor Registration
-Controlled by Hospitals: Doctor registration is restricted to hospital authorities only.
-Secure Access: Ensures that only valid registrations are accepted and stored on the blockchain.
-Patient Registration
+### 1. Hospital Registration  
+- **Admin-Only Access:** Only hospital authorities can perform registration. Unauthorized attempts are revoked and smart contracts are not executed.  
+- **View Details:** Users can view hospital name, address, and specifications using `hospitalId`.  
 
-Comprehensive Data Entry: Allows for detailed input of patient information, including attendant details.
+### 2. Doctor Registration  
+- **Controlled by Hospitals:** Only hospital authorities can register doctors.  
+- **Secure Access:** Valid registrations are stored on the blockchain.  
 
-Blockchain Security: Ensures that all patient data is securely stored and accessible only to authorized personnel.
-Medical Records
+### 3. Patient Registration  
+- **Comprehensive Data Entry:** Includes patient details and attendant information.  
+- **Blockchain Security:** Patient data is stored securely and accessible only to authorized personnel.  
 
-Non-Fungible Tokens (NFTs): Medical records are managed using non-fungible tokens, which represent unique assets that are not interchangeable.
+### 4. Medical Records  
+- **NFT-Based Storage:** Medical records are represented using **Non-Fungible Tokens (NFTs)** for uniqueness.  
+- **Update Restrictions:** Only doctors can update medical records to ensure data integrity.  
 
-Update Restrictions: Only doctors can update medical records, ensuring data integrity.
+### 5. Examination Details  
+- **Distributed Storage:** Uses **IPFS** to store examination details (investigations, general, and systematic examination results).  
+- **Secure Image Storage:** X-rays and other medical images are stored in IPFS with their hash recorded on the blockchain for secure retrieval.  
 
-Examination Details
-Distributed Storage: Utilizes IPFS (InterPlanetary File System) for storing examination details like investigations, general examination, and systematic examination results.
-Secure Image Storage: X-rays and other medical images are stored in IPFS, and their hash values are recorded on the blockchain for secure retrieval.
+---
 
-Technology Stack
-Blockchain Platform: Ethereum
-Smart Contracts: Solidity
-Web Site Development: HTML, CSS, JS
-Distributed Storage: IPFS (InterPlanetary File System)
+## 🛠 Technology Stack  
+- **Blockchain Platform:** Ethereum  
+- **Smart Contracts:** Solidity  
+- **Web Development:** HTML, CSS, JavaScript  
+- **Distributed Storage:** IPFS (InterPlanetary File System)  
 
-Thank you for your interest in Block My Records. We hope this documentation provides a clear understanding of our project. Feel free to explore the repository.
+**Thank you for your interest in Block My Records!**  
